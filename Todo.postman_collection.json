@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "17318648-8db1-46e5-b7ef-ad4c86c43713",
+		"name": "Todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/todos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Clean\",\r\n    \"duedate\":\"2022-02-22\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteTodo/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteTodo",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

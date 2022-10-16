@@ -1,0 +1,81 @@
+<form (ngSubmit)="insertData()">
+    <div class="row">
+        <div class="form-group col-5">
+            <label for="Todo">Todo</label>
+            <input type="text" name="todo" class="form-control" [(ngModel)]="todo.title">
+        </div>
+        <div class="form-group col-5">
+            <label for="Todo">Due Date</label>
+            <input type="date" name="todo" class="form-control" [(ngModel)]="todo.duedate">
+        </div>
+
+        <button mat-raised-button color="primary" class="col-2">Add</button>
+    </div>
+  
+
+    <br>
+    
+</form>
+<br><br>
+<div class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Todo</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let to of todos">
+
+
+            <th scope="row">{{to.id}}</th>
+            <td *ngIf="(to.isComplete==1); else elseBlock"><s>{{to.title}}</s></td>
+            <td *ngIf="(to.isComplete==1);"><s>{{to.duedate}}</s></td>
+            <ng-template #elseBlock>
+                <td>{{to.title}}</td>
+                <td>{{to.duedate}}</td>
+            </ng-template>
+
+
+
+            <td>
+                <button (click)="deleteData(to.id)" mat-raised-button color="warn">Delete</button>
+                <button mat-raised-button color="accent" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Update</button>
+                <button (click)="markComplete(to.id)" mat-raised-button color="">Mark Complete</button>
+            </td>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update : Id {{to.id}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form (ngSubmit)="updateData(to.id)">
+                                <div class="form-group">
+                                    <label for="Todo">Todo</label>
+                                    <input type="text" name="todo" class="form-control" [(ngModel)]="todoUpComp.title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Todo">Due Date</label>
+                                    <input type="date" name="todo" class="form-control"[(ngModel)]="todoUpComp.duedate">
+                                </div>
+
+                                <br>
+                                <button mat-raised-button color="primary">Add</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </tr>
+    </tbody>
+</div>
